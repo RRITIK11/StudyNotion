@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema(
     },
     lastName: {
       type: String,
-    //required: true,
       trim: true,
     },
     // Define the email field with type String, required, and trimmed
@@ -33,14 +32,14 @@ const userSchema = new mongoose.Schema(
       enum: ["Admin", "Student", "Instructor"],
       required: true,
     },
-    active: {
-      type: Boolean,
-      default: true,
-    },
-    approved: {
-      type: Boolean,
-      default: true,
-    },
+    // active: {
+    //   type: Boolean,
+    //   default: true,
+    // },
+    // approved: {
+    //   type: Boolean,
+    //   default: true,
+    // },
     additionalDetails: {
       type: mongoose.Schema.Types.ObjectId,
       //required: true,
@@ -52,12 +51,12 @@ const userSchema = new mongoose.Schema(
         ref: "Course",
       },
     ],
-    token: {
-      type: String,
-    },
-    resetPasswordExpires: {
-      type: Date,
-    },
+    // token: {
+    //   type: String,
+    // },
+    // resetPasswordExpires: {
+    //   type: Date,
+    // },
     image: {
       type: String,
     },
