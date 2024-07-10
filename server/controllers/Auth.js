@@ -16,7 +16,7 @@ exports.signup = async (req, res) => {
     const {
       firstName,
       lastName,
-      email, 
+      email,
       password,
       confirmPassword,
       accountType,
@@ -74,7 +74,7 @@ exports.signup = async (req, res) => {
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
-    
+
     // Create the user
     let approved = ""
     approved === "Instructor" ? (approved = false) : (approved = true)
@@ -94,6 +94,8 @@ exports.signup = async (req, res) => {
       password: hashedPassword,
       accountType: accountType,
       approved: approved,
+      additionalDetails: profileDetails._id,
+      image: "",
     })
 
     return res.status(200).json({
@@ -110,7 +112,7 @@ exports.signup = async (req, res) => {
   }
 }
 
-// Login controller for authenticating 
+// Login controller for authenticating users
 exports.login = async (req, res) => {
   try {
     // Get email and password from request body
