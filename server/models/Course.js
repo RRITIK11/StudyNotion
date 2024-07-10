@@ -6,8 +6,8 @@ const coursesSchema = new mongoose.Schema({
   courseDescription: { type: String },
   instructor: {
     type: mongoose.Schema.Types.ObjectId,
+    required: true,
     ref: "user",
-    required : true,
   },
   whatYouWillLearn: {
     type: String,
@@ -31,28 +31,29 @@ const coursesSchema = new mongoose.Schema({
     type: String,
   },
   tag: {
-    type : mongoose.Schema.Types.ObjectId,
-    ref : 'Tag'
+    type: [String],
+    required: true,
   },
-  // category: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   // required: true,
-  //   ref: "Category",
-  // },
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    // required: true,
+    ref: "Category",
+  },
   studentsEnroled: [
     {
       type: mongoose.Schema.Types.ObjectId,
+      required: true,
       ref: "user",
     },
   ],
-  // instructions: {
-  //   type: [String],
-  // },
-  // status: {
-  //   type: String,
-  //   enum: ["Draft", "Published"],
-  // },
-  // createdAt: { type: Date, default: Date.now() },
+  instructions: {
+    type: [String],
+  },
+  status: {
+    type: String,
+    enum: ["Draft", "Published"],
+  },
+  createdAt: { type: Date, default: Date.now },
 })
 
 // Export the Courses model
